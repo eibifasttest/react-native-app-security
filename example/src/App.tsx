@@ -1,20 +1,16 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { AppSecurity } from '@sleiv/react-native-app-security';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
   React.useEffect(() => {
-    AppSecurity.multiply(3, 7).then(setResult);
+    AppSecurity.isDebugEnabled().then(console.log);
+    AppSecurity.isDeviceRooted().then(console.log);
+    AppSecurity.isIncorrectFingerprint(['']).then(console.log);
   }, []);
 
-  return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
-  );
+  return <View style={styles.container} />;
 }
 
 const styles = StyleSheet.create({
