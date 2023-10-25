@@ -22,9 +22,9 @@ function createModuleProxy<T>(moduleName: string): T {
 }
 
 export interface AppSecurityType {
-  multiply: (a: number, b: number) => Promise<number>;
-  // backToPreviousApp: () => Promise<void>;
-  // exitApp: () => Promise<void>;
+  isDeviceRooted(): Promise<boolean>;
+  isDebugEnabled(): Promise<boolean>;
+  isIncorrectFingerprint(fingerprints: string[]): Promise<boolean>; // android only
 }
 
 export const AppSecurity = createModuleProxy<AppSecurityType>('AppSecurity');
