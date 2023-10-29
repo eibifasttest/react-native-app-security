@@ -3,29 +3,29 @@ import IOSSecuritySuite
 @objc(AppSecurity)
 class AppSecurity: NSObject {
 
-  @objc(isDeviceRooted)
-  func isDeviceRooted(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) -> Void {
+  @objc
+  func isDeviceRooted(_ resolver: RCTPromiseResolveBlock, rejecter: RCTPromiseRejectBlock) -> Void {
     do {
       let result = IOSSecuritySuite.amIJailbroken()
-      resolve(result)
+      resolver(result)
     } catch let error as NSError {
-      reject("Jailbreak detection failed", error)
+      rejecter("isDeviceRooted::Error", "Jailbreak detection failed", error)
     }
   }
 
-  @objc(isDebugEnabled)
-  func isDebugEnabled(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) -> Void {
+  @objc
+  func isDebugEnabled(_ resolver: RCTPromiseResolveBlock, rejecter: RCTPromiseRejectBlock) -> Void {
     do {
       let result = IOSSecuritySuite.amIDebugged()
-      resolve(result)
+      resolver(result)
     } catch let error as NSError {
-      reject("Debug detection failed", error)
+      rejecter("isDebugEnabled::Error", "Debug detection failed", error)
     }
   }
 
-  @objc(isIncorrectFingerprint:)
-  func isIncorrectFingerprint(fingerprints: NSArray, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
+  @objc
+  func isIncorrectFingerprint(_ fingerprints: NSArray, resolver:RCTPromiseResolveBlock,rejecter:RCTPromiseRejectBlock) -> Void {
     // not supported on iOS
-    resolve(false)
+    resolver(false)
   }
 }

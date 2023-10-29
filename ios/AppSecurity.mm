@@ -7,11 +7,11 @@
   return NO;
 }
 
-RCT_EXTERN_METHOD(isDeviceRooted:withResolver:(RCTPromiseResolveBlock)resolve
-                  withRejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(isDeviceRooted:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
 
-RCT_EXTERN_METHOD(isDebugEnabled:withResolver:(RCTPromiseResolveBlock)resolve
-                  withRejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(isDebugEnabled:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
 
 RCT_EXTERN_METHOD(isIncorrectFingerprint:(NSArray<NSString *> *)fingerprints
                   resolver:(RCTPromiseResolveBlock)resolve

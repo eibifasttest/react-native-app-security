@@ -10,6 +10,7 @@ import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
+import com.facebook.react.bridge.ReadableArray
 import com.scottyab.rootbeer.RootBeer
 import java.security.MessageDigest
 
@@ -86,21 +87,28 @@ class AppSecurityModule(reactContext: ReactApplicationContext) :
   }
 
   @ReactMethod
-  fun isIncorrectFingerprint(fingerprints: Array<String>, promise: Promise) {
+  fun isIncorrectFingerprint(fingerprints: ReadableArray, promise: Promise) {
     try {
+      val fingerprintArray: MutableList<String> = mutableListOf()
+
+      for (i in 0 until fingerprints.size()) {
+        fingerprintArray.add(fingerprints.getString(i))
+      }
+
       reactApplicationContext?.let {
-        for (fingerprint in fingerprints) {
+        for (fingerprint in fingerprintArray) {
           if (hexToBase64(fingerprint) == getCertificateFingerprints(it)) {
-            promise.resolve(true)
+            promise.resolve(false)
             return
           }
         }
       }
+
+      promise.resolve(true)
     } catch (e: Exception) {
       e.printStackTrace()
       promise.reject(e)
     }
-    promise.resolve(false)
   }
 
   companion object {
