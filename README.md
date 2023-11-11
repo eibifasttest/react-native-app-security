@@ -20,11 +20,11 @@ yarn add @sleiv/react-native-app-security
 ## Usage
 
 ```ts
-import { multiply } from '@sleiv/react-native-app-security';
+import { AppSecurity } from '@sleiv/react-native-app-security';
 
 // ...
 
-const result = await multiply(3, 7);
+const isRooted = await AppSecurity.isDeviceRooted();
 ```
 
 ## Contributing
