@@ -22,9 +22,15 @@ yarn add @sleiv/react-native-app-security
 ```ts
 import { AppSecurity } from '@sleiv/react-native-app-security';
 
-// ...
-
+// root check
 const isRooted = await AppSecurity.isDeviceRooted();
+
+// debug check
+const isDebugEnabled = await AppSecurity.isDebugEnabled();
+
+// fingerprint check (android only)
+const fingerprints = ['...']
+const isIncorrectFingerprint = await AppSecurity.isIncorrectFingerprint(fingerprints)
 ```
 
 ## Contributing
