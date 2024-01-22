@@ -24,12 +24,12 @@ public class AppSecurityModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void isDeviceRooted(final Promise promise) {
-    promise.resolve(true);
+    promise.resolve(false);
   }
 
   @ReactMethod
   public void isDebugEnabled(final Promise promise) {
-    promise.resolve(true);
+    promise.resolve(false);
   }
 
 }
