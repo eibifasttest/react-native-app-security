@@ -32,9 +32,4 @@ public class AppSecurityModule extends ReactContextBaseJavaModule {
     promise.resolve(true);
   }
 
-  @ReactMethod
-  public void isIncorrectFingerprint(final Promise promise) {
-    promise.resolve(true);
-  }
-
 }

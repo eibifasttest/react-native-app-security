@@ -23,9 +23,4 @@ class AppSecurity: NSObject {
     }
   }
 
-  @objc
-  func isIncorrectFingerprint(_ fingerprints: NSArray, resolver:RCTPromiseResolveBlock,rejecter:RCTPromiseRejectBlock) -> Void {
-    // not supported on iOS
-    resolver(false)
-  }
 }
